@@ -6,11 +6,11 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware - CORS and JSON parsing must be at the top!
+// Middleware 
 app.use(cors());
 app.use(express.json());
 
-// Data file path (simple JSON file storage)
+// Data file path 
 const DATA_PATH = path.join(__dirname, "data.json");
 
 // Helper: Load data
@@ -59,7 +59,7 @@ app.post("/api/register", (req, res) => {
     return res.status(409).json({ message: "User exists" });
   }
   
-  data.users[username] = password; // In real life, hash this!
+  data.users[username] = password;
   saveData(data);
   
   console.log("User registered successfully:", username);
